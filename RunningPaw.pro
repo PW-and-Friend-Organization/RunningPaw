@@ -9,7 +9,8 @@ QML_IMPORT_PATH =
 QT += positioning sql
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    workoutclient.cpp
 
 # Installation path
 # target.path =
@@ -20,7 +21,4 @@ qtcAddDeployment()
 
 HEADERS += \
     ContextMenu.h \
-    ExerciseRecorder.h \
-    OnlineDB.h \
-    LocalDB.h \
-    UserProfile.h
+    workoutclient.h

@@ -2,7 +2,7 @@
 #include "qtquick2applicationviewer.h"
 #include <qqmlcontext.h>
 #include <QDebug>
-#include "ExerciseRecorder.h"
+#include "workoutclient.h"
 #include "ContextMenu.h"
 
 int main(int argc, char *argv[])
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     ContextList.append(new ContextMenu("LOGOUT", "logout.qml"));
 
     // ExerciseRecorder
-    ExerciseRecorder oExerciseRecorder;
+    WorkoutClient oExerciseRecorder;
 
     QQmlContext *ctxt = viewer.rootContext();
     ctxt->setContextProperty("ContextMenuList", QVariant::fromValue(ContextList));
