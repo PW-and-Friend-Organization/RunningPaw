@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "workoutclient.h"
 #include "ContextMenu.h"
+#include "notificationclient.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,6 +25,10 @@ int main(int argc, char *argv[])
     QQmlContext *ctxt = viewer.rootContext();
     ctxt->setContextProperty("ContextMenuList", QVariant::fromValue(ContextList));
     ctxt->setContextProperty("ExerciseRecorder", &oExerciseRecorder);
+
+    // JNI notification and facebook connect
+    NotificationClient *notificationClient = new NotificationClient(&viewer);
+    ctxt->setContextProperty(QLatin1String("notificationClient"),notificationClient);
 
     viewer.setMainQmlFile(QStringLiteral("qml/RunningPaw/splash.qml"));
     viewer.showExpanded();
