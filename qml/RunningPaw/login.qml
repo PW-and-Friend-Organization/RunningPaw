@@ -12,6 +12,8 @@ Rectangle {
     property int displayMargin : parent.width / 40;
     property int txtPointSize : 15;
 
+//    notificationClient.onLoginPass.connect(onLogin);
+
     Image {
         id: btn_fb_login
         anchors.centerIn: parent
@@ -58,7 +60,7 @@ Rectangle {
         else
         {
             // go to facebook page
-            notificationClient.loginFlag = "1"
+            notificationClient.loginFlag++;
         }
     }
 }

@@ -48,7 +48,8 @@ class NotificationClient : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notification READ notification WRITE setNotification NOTIFY notificationChanged)
-    Q_PROPERTY(QString loginFlag READ loginFlag WRITE setLoginFlag NOTIFY loginFlagChanged)
+    Q_PROPERTY(QString loginFlag READ loginFlag WRITE setLoginFlag NOTIFY loginFlagChanged) 
+
 public:
     explicit NotificationClient(QObject *parent = 0);
 
@@ -62,6 +63,8 @@ signals:
     void notificationChanged();
     void loginFlagChanged();
     void onJNILoadingPage(const QString url);
+
+    void loginPass();
 
 private slots:
     void updateAndroidNotification();

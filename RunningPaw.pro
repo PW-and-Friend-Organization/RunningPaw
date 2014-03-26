@@ -13,7 +13,8 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     workoutclient.cpp \
-    notificationclient.cpp
+    notificationclient.cpp \
+    runningpaw.cpp
 
 # Installation path
 # target.path =
@@ -25,7 +26,8 @@ qtcAddDeployment()
 HEADERS += \
     ContextMenu.h \
     workoutclient.h \
-    notificationclient.h
+    notificationclient.h \
+    runningpaw.h
 
 OTHER_FILES += \
     android-sources/AndroidManifest.xml \

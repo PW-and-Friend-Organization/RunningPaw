@@ -43,6 +43,7 @@
 
 #include <QtAndroidExtras/QAndroidJniObject>
 #include <QtAndroidExtras/QAndroidJniEnvironment>
+#include "runningpaw.h"
 #include <QDebug>
 
 static void myQtDebug(JNIEnv *, jclass /*clazz*/, jstring s)
@@ -58,9 +59,9 @@ static void jni_QtFacebookLogin(JNIEnv *, jclass /*clazz*/, jstring s)
 {
     QAndroidJniObject javaRetObj = (QAndroidJniObject)s;
 
-    QString accessToken = javaRetObj.toString();
+    theApp.notificationclient->setLoginFlag("1");
 
-    qDebug()<< accessToken;
+    //facebookclient::setAccessToken( javaRetObj.toString() );
 }
 
 //void registerNativeMethods() {
@@ -108,6 +109,8 @@ NotificationClient::NotificationClient(QObject *parent)
 {
     connect(this, SIGNAL(notificationChanged()), this, SLOT(updateAndroidNotification()));
     connect(this, SIGNAL(loginFlagChanged()), this, SLOT(facebookLogin()));
+
+    m_loginFlag = "2";
 }
 
 void NotificationClient::setNotification(const QString &notification)
@@ -149,5 +152,6 @@ void NotificationClient::updateAndroidNotification()
 
 void NotificationClient::facebookLogin()
 {
-    QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "startFacebook");
+    if( m_loginFlag != "1")
+        QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "startFacebook");
 }

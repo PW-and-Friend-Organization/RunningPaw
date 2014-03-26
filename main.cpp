@@ -2,14 +2,20 @@
 #include "qtquick2applicationviewer.h"
 #include <qqmlcontext.h>
 #include <QDebug>
+#include "runningpaw.h"
 #include "workoutclient.h"
 #include "ContextMenu.h"
 #include "notificationclient.h"
+
+runningpaw theApp;
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     QtQuick2ApplicationViewer viewer;
+
+    theApp.ExerciseRecorder = new WorkoutClient;
+    theApp.notificationclient = new NotificationClient;
 
     // Connect myModel Value to QML ListView myModel
     QList<QObject*> ContextList;
@@ -19,16 +25,12 @@ int main(int argc, char *argv[])
     ContextList.append(new ContextMenu("ABOUT", "about.qml"));
     ContextList.append(new ContextMenu("LOGOUT", "logout.qml"));
 
-    // ExerciseRecorder
-    WorkoutClient oExerciseRecorder;
-
     QQmlContext *ctxt = viewer.rootContext();
     ctxt->setContextProperty("ContextMenuList", QVariant::fromValue(ContextList));
-    ctxt->setContextProperty("ExerciseRecorder", &oExerciseRecorder);
+    ctxt->setContextProperty("ExerciseRecorder", theApp.ExerciseRecorder);
 
     // JNI notification and facebook connect
-    NotificationClient *notificationClient = new NotificationClient(&viewer);
-    ctxt->setContextProperty(QLatin1String("notificationClient"),notificationClient);
+    ctxt->setContextProperty(QLatin1String("notificationClient"), theApp.notificationclient);
 
     viewer.setMainQmlFile(QStringLiteral("qml/RunningPaw/splash.qml"));
     viewer.showExpanded();
