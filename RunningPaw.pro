@@ -6,7 +6,7 @@ DEPLOYMENTFOLDERS = folder_01
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-QT += positioning sql quick androidextras
+QT += positioning sql quick androidextras network core gui
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 
@@ -14,7 +14,9 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 SOURCES += main.cpp \
     workoutclient.cpp \
     notificationclient.cpp \
-    runningpaw.cpp
+    runningpaw.cpp \
+    facebookclient.cpp \
+    localdb.cpp
 
 # Installation path
 # target.path =
@@ -27,7 +29,9 @@ HEADERS += \
     ContextMenu.h \
     workoutclient.h \
     notificationclient.h \
-    runningpaw.h
+    runningpaw.h \
+    facebookclient.h \
+    localdb.h
 
 OTHER_FILES += \
     android-sources/AndroidManifest.xml \

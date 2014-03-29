@@ -60,8 +60,7 @@ static void jni_QtFacebookLogin(JNIEnv *, jclass /*clazz*/, jstring s)
     QAndroidJniObject javaRetObj = (QAndroidJniObject)s;
 
     theApp.notificationclient->setLoginFlag("1");
-
-    //facebookclient::setAccessToken( javaRetObj.toString() );
+    theApp.facebookclient->SetAccessToken( javaRetObj.toString() );
 }
 
 //void registerNativeMethods() {

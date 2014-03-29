@@ -6,6 +6,7 @@
 #include "workoutclient.h"
 #include "ContextMenu.h"
 #include "notificationclient.h"
+#include "facebookclient.h"
 
 runningpaw theApp;
 
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
 
     theApp.ExerciseRecorder = new WorkoutClient;
     theApp.notificationclient = new NotificationClient;
+    theApp.facebookclient = new FacebookClient;
 
     // Connect myModel Value to QML ListView myModel
     QList<QObject*> ContextList;
