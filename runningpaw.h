@@ -4,12 +4,15 @@
 #include "notificationclient.h"
 #include "workoutclient.h"
 #include "facebookclient.h"
+#include "localdb.h"
 
 class runningpaw{
 public:
     NotificationClient  *notificationclient;
     WorkoutClient       *ExerciseRecorder;
     FacebookClient      *facebookclient;
+    LocalDB             *pLocalDB;
+
 
 public:
     runningpaw();

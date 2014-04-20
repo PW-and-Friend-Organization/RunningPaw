@@ -7,6 +7,7 @@
 #include "ContextMenu.h"
 #include "notificationclient.h"
 #include "facebookclient.h"
+#include "localdb.h"
 
 runningpaw theApp;
 
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
     theApp.ExerciseRecorder = new WorkoutClient;
     theApp.notificationclient = new NotificationClient;
     theApp.facebookclient = new FacebookClient;
+    theApp.pLocalDB = new LocalDB;
+    theApp.pLocalDB->openDB();
 
     // Connect myModel Value to QML ListView myModel
     QList<QObject*> ContextList;

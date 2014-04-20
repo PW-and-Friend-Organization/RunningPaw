@@ -9,6 +9,8 @@ class FacebookClient : public QObject
 
 public:
     QString m_accessToken;
+    QString m_sName;
+    QString m_sId;
 
 public:
     explicit FacebookClient(QObject *parent = 0);

@@ -25,6 +25,8 @@ public:
     int InsertUser(QString fb_id, QString fb_name, int Exp, int LoginStatus);
     int CheckIfUserLogin();
 
+    int CreateFileFlow();
+
 public:
     QVector<QString> rp_user_col_index;
 

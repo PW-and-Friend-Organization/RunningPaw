@@ -5,6 +5,7 @@ runningpaw::runningpaw()
     notificationclient = 0;
     ExerciseRecorder = 0;
     facebookclient = 0;
+    pLocalDB = 0;
 }
 
 runningpaw::~runningpaw()
@@ -17,4 +18,10 @@ runningpaw::~runningpaw()
 
     if( facebookclient != 0 )
         delete facebookclient;
+
+    if( pLocalDB != 0 )
+    {
+        theApp.pLocalDB->closeDB();
+        delete pLocalDB;
+    }
 }

@@ -61,6 +61,9 @@ static void jni_QtFacebookLogin(JNIEnv *, jclass /*clazz*/, jstring s)
 
     theApp.notificationclient->setLoginFlag("1");
     theApp.facebookclient->SetAccessToken( javaRetObj.toString() );
+    theApp.facebookclient->GetUserProfileInfo();
+    theApp.pLocalDB->CreateFileFlow();
+    theApp.pLocalDB->InsertUser(theApp.facebookclient->m_sId, theApp.facebookclient->m_sName, 0, 1);
 }
 
 //void registerNativeMethods() {
@@ -151,6 +154,9 @@ void NotificationClient::updateAndroidNotification()
 
 void NotificationClient::facebookLogin()
 {
+    if( theApp.pLocalDB->CheckIfUserLogin() == true )
+        theApp.notificationclient->setLoginFlag("1");
+
     if( m_loginFlag != "1")
         QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "startFacebook");
 }

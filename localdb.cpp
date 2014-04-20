@@ -2,6 +2,7 @@
 #include "runningpaw.h"
 #include <QVector>
 #include <QVariant>
+#include <QDebug>
 
 #define USER_TABLE "RP_USERS"
 
@@ -44,7 +45,7 @@ int LocalDB::CreateUserTable()
             .append(rp_user_col_index.at(id_rp_user_fb_id)).append(" varchar(50), ")
             .append(rp_user_col_index.at(id_rp_user_fb_name)).append(" varchar(250), ")
             .append(rp_user_col_index.at(id_rp_user_exp)).append(" integer, ")
-            .append(rp_user_col_index.at(id_rp_user_login_status)).append(" integer ").append(");");
+            .append(rp_user_col_index.at(id_rp_user_login_status)).append(" integer").append(");");
 
     query.exec( statement );
 
@@ -56,16 +57,22 @@ int LocalDB::InsertUser(QString fb_id, QString fb_name, int Exp, int LoginStatus
     QSqlQuery query;
 
     QString statement;
+    QString sColumn;
+    QString sValue;
+
+    sColumn.append(rp_user_col_index.at(id_rp_user_fb_id)).append(",")
+            .append(rp_user_col_index.at(id_rp_user_fb_name)).append(",")
+            .append(rp_user_col_index.at(id_rp_user_exp)).append(",")
+            .append(rp_user_col_index.at(id_rp_user_login_status));
+
+    sValue.append("\'").append(fb_id).append("\', ")
+          .append("\'").append(fb_name).append("\', ")
+          .append(QString("%1").arg(Exp)).append(", ")
+          .append(QString("%1").arg(LoginStatus));
 
     statement.append("INSERT INTO ").append(USER_TABLE).append("(")
-            .append(rp_user_col_index.at(id_rp_user_fb_id)).append(", ")
-            .append(rp_user_col_index.at(id_rp_user_fb_name)).append(", ")
-            .append(rp_user_col_index.at(id_rp_user_exp)).append(", ")
-            .append(rp_user_col_index.at(id_rp_user_login_status)).append(" VALUES(")
-            .append("\'").append(fb_id).append("\', ")
-            .append("\'").append(fb_name).append("\', ")
-            .append(Exp).append(", ")
-            .append(LoginStatus).append(");");
+            .append(sColumn).append(")VALUES(")
+            .append(sValue).append(");");
 
     query.exec(statement);
 
@@ -76,7 +83,7 @@ int LocalDB::CheckIfUserLogin()
 {
     QString statement;
     statement.append("Select * From ").append(USER_TABLE).append(" where ")
-            .append(rp_user_col_index.at(4)).append(" = 1;");
+            .append(rp_user_col_index.at(id_rp_user_login_status)).append(" = 1;");
 
     QSqlQuery query(statement);
     QSqlRecord rec = query.record();
@@ -93,4 +100,32 @@ int LocalDB::CheckIfUserLogin()
         return true;
     else
         return false;
+}
+
+int LocalDB::CreateFileFlow()
+{
+    QFile Fout("my.db.sqlite");
+    if(Fout.exists())
+    {
+        qDebug()<< "my.db.sqlite file exist!";
+    }
+
+//    if( openDB() == true)
+//    {
+//        qDebug()<< "db is open";
+//        if(Fout.exists())
+//        {
+//            qDebug()<< "my.db.sqlite file exist!";
+//        }
+//    }
+
+    CreateUserTable();
+//    closeDB();
+
+//    if(Fout.exists())
+//        qDebug()<< "my.db.sqlite file exist!";
+//    else
+//        qDebug()<< "my.db.sqlite is deleted!";
+
+    return true;
 }
