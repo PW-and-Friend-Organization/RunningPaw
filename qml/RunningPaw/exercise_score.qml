@@ -39,19 +39,19 @@ Rectangle {
             }
         }
 
-        Row{
-            Label {
-                text: "Distance : "
-                font.pointSize: txtPointSize
-                color: "darkblue"
-            }
-            Label {
-                id: lbl_distance
-                font.pointSize: txtPointSize
-                color: "darkblue"
-                text: ExerciseRecorder.distance
-            }
-        }
+//        Row{
+//            Label {
+//                text: "Distance : "
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//            }
+//            Label {
+//                id: lbl_distance
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//                text: ExerciseRecorder.distance
+//            }
+//        }
 
         Row{
             Label {
@@ -64,38 +64,38 @@ Rectangle {
                 id: lbl_chest_found
                 font.pointSize: txtPointSize
                 color: "darkblue"
-                text: "0"
+                text: MyEvent.pick_count
             }
         }
 
-        Row{
-            Label {
-                text: "Quest Accomplish : "
-                font.pointSize: txtPointSize
-                color: "darkblue"
-            }
-            Label {
-                id: lbl_quest
-                font.pointSize: txtPointSize
-                color: "darkblue"
-                text: "0"
-            }
-        }
+//        Row{
+//            Label {
+//                text: "Quest Accomplish : "
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//            }
+//            Label {
+//                id: lbl_quest
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//                text: "0"
+//            }
+//        }
 
-        Row{
-            Label {
-                id: stat_display_details_mypet
-                text: "Experience Gain : "
-                font.pointSize: txtPointSize
-                color: "darkblue"
-            }
-            Label {
-                id: lbl_exp_gain
-                font.pointSize: txtPointSize
-                color: "darkblue"
-                text: ExerciseRecorder.exp_gain
-            }
-        }
+//        Row{
+//            Label {
+//                id: stat_display_details_mypet
+//                text: "Experience Gain : "
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//            }
+//            Label {
+//                id: lbl_exp_gain
+//                font.pointSize: txtPointSize
+//                color: "darkblue"
+//                text: ExerciseRecorder.exp_gain
+//            }
+//        }
     }
 
     Button {

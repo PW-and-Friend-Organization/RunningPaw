@@ -12,11 +12,10 @@ Rectangle {
 
     Image {
         id: btn_start
-        width: 100
-        height: 100
+        width: parent.width/5
+        height: parent.width/5
         source: "btn_play_idle.png"
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
+        anchors.centerIn: parent
 
         MouseArea {
             anchors.fill: parent
@@ -39,33 +38,33 @@ Rectangle {
         }
     }
 
-    Rectangle{
-        anchors{top: btn_start.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
-        ListModel {
-            id: questModel
-            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
-            ListElement{ quest_title:"30min jogs"; quest_desc:"Run at least for 30 minutes without stop"}
-            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
-            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
-            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
-            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
-        }
-        Component {
-            id: questDelegate
-            Row{
-                CheckBox{
-                }
-                Column {
-                    Text { text: quest_title; font.pointSize: txtPointSize; font.bold: true }
-                    Text { text: quest_desc; font.pointSize: txtPointSizeSub }
-                }
-            }
-        }
+//    Rectangle{
+//        anchors{top: btn_start.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
+//        ListModel {
+//            id: questModel
+//            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
+//            ListElement{ quest_title:"30min jogs"; quest_desc:"Run at least for 30 minutes without stop"}
+//            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
+//            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
+//            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
+//            ListElement{ quest_title:"50m sprints"; quest_desc:"Run 50 meters in 10 seconds"}
+//        }
+//        Component {
+//            id: questDelegate
+//            Row{
+//                CheckBox{
+//                }
+//                Column {
+//                    Text { text: quest_title; font.pointSize: txtPointSize; font.bold: true }
+//                    Text { text: quest_desc; font.pointSize: txtPointSizeSub }
+//                }
+//            }
+//        }
 
-        ListView {
-           anchors.fill: parent
-           model: questModel
-           delegate: questDelegate
-        }
-    }
+//        ListView {
+//           anchors.fill: parent
+//           model: questModel
+//           delegate: questDelegate
+//        }
+//    }
 }

@@ -42,24 +42,9 @@ Rectangle {
             anchors.left: mypet_stats_frame.left
 
             Text{
-                text: "AGUMON"
+                text: FacebookClient.name
                 font.bold: true
                 font.pointSize: txtPointSize
-            }
-
-            Row{
-                id: home_stat_row1
-                Text{
-                    text: "Level : "
-                    font.bold: true
-                    font.pointSize: txtPointSizeSub
-                }
-                Text{
-                    text: "13"
-                    font.bold: true
-                    font.italic: true
-                    font.pointSize: txtPointSizeSub
-                }
             }
 
             Row{
@@ -70,22 +55,7 @@ Rectangle {
                     font.pointSize: txtPointSizeSub
                 }
                 Text{
-                    text: "57"
-                    font.bold: true
-                    font.italic: true
-                    font.pointSize: txtPointSizeSub
-                }
-            }
-
-            Row{
-               id: home_stat_row3
-                Text{
-                    text: "Experience : "
-                    font.bold: true
-                    font.pointSize: txtPointSizeSub
-                }
-                Text{
-                    text: "1334561"
+                    text: FacebookClient.found
                     font.bold: true
                     font.italic: true
                     font.pointSize: txtPointSizeSub
@@ -101,7 +71,7 @@ Rectangle {
                 id: mypet_experience_bar
                 anchors.topMargin: displayMargin
                 anchors.horizontalCenter: mypet_stats_frame.horizontalCenter
-                value: 30
+                value: 99
                 minimumValue: 0.0
                 maximumValue: 100.0
                 style: ProgressBarStyle {

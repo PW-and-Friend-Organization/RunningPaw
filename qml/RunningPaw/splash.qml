@@ -13,7 +13,7 @@ Rectangle {
     }
 
     Timer {
-        interval: 500; running: true; repeat: true
+        interval: 100; running: true; repeat: true
         onTriggered: {
             bzIndicator.running = false
             login_page.source = 'login.qml'

@@ -10,28 +10,55 @@ Rectangle {
     color: "white"
 
     property int displayMargin : parent.width / 40;
-    property int txtPointSize : 15;
+    property int txtPointSize : 25;
 
 //    notificationClient.onLoginPass.connect(onLogin);
 
-    Image {
-        id: btn_fb_login
+
+    Column {
         anchors.centerIn: parent
 
-        source : "login_fb_up.png"
+        Text {
+            anchors.verticalCenter: parent.horizontalCenter
 
-        MouseArea {
-            anchors.fill: parent
+            text: "Running Paw"
+            color: "purple"
+            font.family: "Arial"
+            font.pointSize: 30
+        }
 
-            onClicked: {
-                btn_fb_login.source = "login_fb_down.png"
-                onLogin()
-            }
-            onPressed: {
-                btn_fb_login.source = "login_fb_down.png"
-            }
-            onCanceled: {
-                btn_fb_login.source = "login_fb_up.png"
+        Image {
+            source : "dog_icon_clean.png"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            id: ref_height
+            text: " "
+            font.pointSize: txtPointSize
+        }
+
+        Image {
+            id: btn_fb_login
+            height: ref_height.height
+            width: ref_height.height*5
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            source : "login_fb_up.png"
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {
+                    btn_fb_login.source = "login_fb_down.png"
+                    onLogin()
+                }
+                onPressed: {
+                    btn_fb_login.source = "login_fb_down.png"
+                }
+                onCanceled: {
+                    btn_fb_login.source = "login_fb_up.png"
+                }
             }
         }
     }
