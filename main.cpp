@@ -8,6 +8,7 @@
 #include "notificationclient.h"
 #include "facebookclient.h"
 #include "localdb.h"
+#include "myevent.h"
 
 runningpaw theApp;
 
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
     theApp.facebookclient = new FacebookClient;
     theApp.pLocalDB = new LocalDB;
     theApp.pLocalDB->openDB();
+    theApp.pMyEvent = new MyEvent;
 
     // Connect myModel Value to QML ListView myModel
     QList<QObject*> ContextList;
@@ -33,6 +35,7 @@ int main(int argc, char *argv[])
     QQmlContext *ctxt = viewer.rootContext();
     ctxt->setContextProperty("ContextMenuList", QVariant::fromValue(ContextList));
     ctxt->setContextProperty("ExerciseRecorder", theApp.ExerciseRecorder);
+    ctxt->setContextProperty("MyEvent", theApp.pMyEvent);
 
     // JNI notification and facebook connect
     ctxt->setContextProperty(QLatin1String("notificationClient"), theApp.notificationclient);

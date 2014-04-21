@@ -28,6 +28,7 @@ Rectangle {
                 screen.isRunning = true
                 loader_animation.start()
                 ExerciseRecorder.start()
+                MyEvent.start()
             }
             onPressed: {
                 btn_start.source = "btn_play_press.png"

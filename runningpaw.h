@@ -5,6 +5,7 @@
 #include "workoutclient.h"
 #include "facebookclient.h"
 #include "localdb.h"
+#include "myevent.h"
 
 class runningpaw{
 public:
@@ -12,7 +13,7 @@ public:
     WorkoutClient       *ExerciseRecorder;
     FacebookClient      *facebookclient;
     LocalDB             *pLocalDB;
-
+    MyEvent             *pMyEvent;
 
 public:
     runningpaw();

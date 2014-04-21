@@ -59,6 +59,8 @@ public:
     void setLoginFlag(const QString &loginFlag);
     QString loginFlag() const;
 
+    void androidPlayMusic(int i);
+
 signals:
     void notificationChanged();
     void loginFlagChanged();

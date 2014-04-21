@@ -154,9 +154,19 @@ void NotificationClient::updateAndroidNotification()
 
 void NotificationClient::facebookLogin()
 {
-    if( theApp.pLocalDB->CheckIfUserLogin() == true )
-        theApp.notificationclient->setLoginFlag("1");
+//    if( theApp.pLocalDB->CheckIfUserLogin() == true )
+//        theApp.notificationclient->setLoginFlag("1");
+
+    // tentative bypass
+    theApp.notificationclient->setLoginFlag("1");
+    return;
 
     if( m_loginFlag != "1")
         QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "startFacebook");
+}
+
+
+void NotificationClient::androidPlayMusic(int i)
+{
+    QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "android_play_sound", "(I)V", i);
 }

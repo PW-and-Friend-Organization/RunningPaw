@@ -6,6 +6,7 @@ runningpaw::runningpaw()
     ExerciseRecorder = 0;
     facebookclient = 0;
     pLocalDB = 0;
+    pMyEvent = 0;
 }
 
 runningpaw::~runningpaw()
@@ -24,4 +25,7 @@ runningpaw::~runningpaw()
         theApp.pLocalDB->closeDB();
         delete pLocalDB;
     }
+
+    if( pMyEvent != 0 )
+        delete pMyEvent;
 }

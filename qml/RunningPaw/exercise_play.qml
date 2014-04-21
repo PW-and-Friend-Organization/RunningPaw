@@ -103,6 +103,7 @@ Rectangle {
                 screen.isRunning = false;
                 loader_animation.start()
                 ExerciseRecorder.stop()
+                MyEvent.stop()
             }
             onPressed: {
                 btn_stop.source = "btn_stop_press.png"
