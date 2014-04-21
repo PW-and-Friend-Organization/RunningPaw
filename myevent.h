@@ -14,6 +14,7 @@ public:
 
     Q_INVOKABLE void start();
     Q_INVOKABLE void stop();
+    Q_INVOKABLE void finalizePickCount();
 
     void startRandomAnimalTimer();
     void startRandomPickUpTimer();

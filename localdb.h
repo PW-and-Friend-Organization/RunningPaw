@@ -23,6 +23,7 @@ public:
 
     int CreateUserTable();
     int InsertUser(QString fb_id, QString fb_name, int Exp, int LoginStatus);
+    int UpdateUser(QString fb_id, QString fb_name, int Exp, int LoginStatus);
     int CheckIfUserLogin();
 
     int CreateFileFlow();

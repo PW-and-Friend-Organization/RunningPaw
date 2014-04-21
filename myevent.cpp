@@ -30,6 +30,8 @@ MyEvent::MyEvent(QObject *parent) :
 
 void MyEvent::start()
 {
+    setPick_count(0);
+
     pAnimalNearByTimer->start(30*multiplier);
     pItemFoundTimer->start(45*multiplier);
 }
@@ -39,11 +41,23 @@ void MyEvent::stop()
     pAnimalNearByTimer->stop();
     pItemFoundTimer->stop();
 }
+
+void MyEvent::finalizePickCount()
+{
+    theApp.facebookclient->setFound(theApp.facebookclient->m_nFound + m_nPickCount);
+
+    QString sID = theApp.facebookclient->m_sId;
+    QString sName = theApp.facebookclient->m_sName;
+    int nFound = theApp.facebookclient->m_nFound;
+    int nLogin = theApp.notificationclient->loginFlag().toInt();
+
+    theApp.pLocalDB->UpdateUser( sID, sName, nFound, nLogin );
+}
+
 void MyEvent::startRandomAnimalTimer()
 {
-
-    int low = 90;
-    int high = 180;
+    int low = 15;
+    int high = 60;
 
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
@@ -110,6 +124,9 @@ void MyEvent::PickUpEvent()
 //    player->play();
 
     theApp.notificationclient->androidPlayMusic(8);
+    int pick = m_nPickCount;
+    pick++;
+    setPick_count(pick);
 
     pItemFoundTimer->stop();
     startRandomPickUpTimer();

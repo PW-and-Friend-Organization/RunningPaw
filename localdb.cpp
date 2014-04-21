@@ -79,6 +79,27 @@ int LocalDB::InsertUser(QString fb_id, QString fb_name, int Exp, int LoginStatus
     return true;
 }
 
+int LocalDB::UpdateUser(QString fb_id, QString fb_name, int Exp, int LoginStatus)
+{
+    QSqlQuery query;
+
+    QString statement;
+    QString sSet;
+    QString sWhere;
+
+    sSet.append(rp_user_col_index.at(id_rp_user_fb_name)).append("=\'").append(fb_name).append("\',")
+        .append(rp_user_col_index.at(id_rp_user_exp)).append("=").append(QString("%1").arg(Exp)).append(",")
+        .append(rp_user_col_index.at(id_rp_user_login_status)).append("=").append(QString("%1").arg(LoginStatus));
+
+    sWhere.append(rp_user_col_index.at(id_rp_user_fb_id)).append("=\'").append(fb_id).append("\'");
+
+    statement.append("UPDATE ").append(USER_TABLE).append(" SET ").append(sSet).append(" WHERE ").append(sWhere);
+
+    query.exec(statement);
+
+    return true;
+}
+
 int LocalDB::CheckIfUserLogin()
 {
     QString statement;
@@ -96,8 +117,14 @@ int LocalDB::CheckIfUserLogin()
         m_nLoginStatus = query.value( rec.indexOf(rp_user_col_index.at(id_rp_user_login_status)) ).toInt();
     }
 
-    if( m_sFb_id != 0)
+    if( m_sFb_id != "")
+    {
+        theApp.facebookclient->m_sId = m_sFb_id;
+        theApp.facebookclient->setName(m_sFb_name);
+        theApp.facebookclient->setFound(m_nExp);
+        theApp.notificationclient->setLoginFlag(QString("%1").arg(m_nLoginStatus));
         return true;
+    }
     else
         return false;
 }

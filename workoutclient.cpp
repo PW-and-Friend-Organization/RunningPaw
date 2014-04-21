@@ -103,7 +103,7 @@ void WorkoutClient::start()
     m_dDistance = 0;
     m_nExpGain = 0;
 
-    startPositioning();
+    //startPositioning();
     startStopwatch();
     return;
 }
@@ -111,7 +111,7 @@ void WorkoutClient::stop()
 {
     qDebug() << "ExcerciseRecorder has stop";
 
-    stopPositioning();
+    //stopPositioning();
     stopStopwatch();
 
     setExp_gain(((recordingTime.elapsed()/1000)*m_dDistance)/10);

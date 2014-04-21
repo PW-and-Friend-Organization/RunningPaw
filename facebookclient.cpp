@@ -15,6 +15,7 @@
 FacebookClient::FacebookClient(QObject *parent) :
     QObject(parent)
 {
+    m_nFound = 0;
 }
 
 void FacebookClient::SetAccessToken(QString s)
@@ -53,6 +54,32 @@ void FacebookClient::GetUserProfileInfo()
         qDebug() << last_name.toString();
 
         m_sId.append(fblogin_id.toString());
-        m_sName.append(first_name.toString()).append(" ").append(last_name.toString());
+        QString sName;
+        sName.append(first_name.toString()).append(" ").append(last_name.toString());
+        setName(sName);
+    }
+}
+
+QString FacebookClient::name() const
+{
+    return m_sName;
+}
+void FacebookClient::setName(const QString &a)
+{
+    if( a != m_sName){
+        m_sName = a;
+        emit nameChanged();
+    }
+}
+
+int FacebookClient::found() const
+{
+    return m_nFound;
+}
+void FacebookClient::setFound(const int &a)
+{
+    if( a != m_nFound){
+        m_nFound = a;
+        emit foundChanged();
     }
 }

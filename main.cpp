@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     // Connect myModel Value to QML ListView myModel
     QList<QObject*> ContextList;
     ContextList.append(new ContextMenu("HOME", "home.qml"));
-    ContextList.append(new ContextMenu("INVENTORY", "inventory.qml"));
+    //ContextList.append(new ContextMenu("INVENTORY", "inventory.qml"));
     ContextList.append(new ContextMenu("EXERCISE", "exercise.qml"));
     ContextList.append(new ContextMenu("ABOUT", "about.qml"));
     ContextList.append(new ContextMenu("LOGOUT", "logout.qml"));
@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("ContextMenuList", QVariant::fromValue(ContextList));
     ctxt->setContextProperty("ExerciseRecorder", theApp.ExerciseRecorder);
     ctxt->setContextProperty("MyEvent", theApp.pMyEvent);
+    ctxt->setContextProperty("FacebookClient", theApp.facebookclient);
 
     // JNI notification and facebook connect
     ctxt->setContextProperty(QLatin1String("notificationClient"), theApp.notificationclient);
