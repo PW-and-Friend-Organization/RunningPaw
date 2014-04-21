@@ -1,4 +1,4 @@
-package com.appli.test;
+package com.blueorbitz.digicfc2;
 
 import org.qtproject.qt5.android.bindings.QtApplication;
 import org.qtproject.qt5.android.bindings.QtActivity;

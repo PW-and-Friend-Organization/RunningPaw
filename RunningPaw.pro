@@ -37,5 +37,5 @@ HEADERS += \
 
 OTHER_FILES += \
     android-sources/AndroidManifest.xml \
-    android-sources/src/com/appli/test/TMain.java \
-    android-sources/src/com/appli/test/TFacebook.java
+    android-sources/src/com/blueorbitz/digicfc2/TMain.java \
+    android-sources/src/com/blueorbitz/digicfc2/TFacebook.java

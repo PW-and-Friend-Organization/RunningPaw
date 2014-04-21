@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<manifest android:versionName="1.0" package="com.appli.test" android:installLocation="auto" xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1">
+<manifest android:versionName="1.0" package="com.blueorbitz.digicfc2" android:installLocation="auto" xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:name="org.qtproject.qt5.android.bindings.QtApplication">
-        <activity android:screenOrientation="unspecified" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:label="Running Paw" android:name="com.appli.test.TMain">
+        <activity android:screenOrientation="unspecified" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:label="Running Paw" android:name="com.blueorbitz.digicfc2.TMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

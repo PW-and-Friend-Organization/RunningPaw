@@ -95,11 +95,11 @@ jint JNICALL JNI_OnLoad(JavaVM *vm, void *)
     if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_4) != JNI_OK)
         return JNI_FALSE;
 
-    jclass clazz = env->FindClass("com/appli/test/TMain");
+    jclass clazz = env->FindClass("com/blueorbitz/digicfc2/TMain");
     if (env->RegisterNatives(clazz, methods, sizeof(methods) / sizeof(methods[0])) < 0)
         return JNI_FALSE;
 
-    clazz = env->FindClass("com/appli/test/TFacebook");
+    clazz = env->FindClass("com/blueorbitz/digicfc2/TFacebook");
     if (env->RegisterNatives(clazz, methods2, sizeof(methods2) / sizeof(methods2[0])) < 0)
         return JNI_FALSE;
 
@@ -163,11 +163,11 @@ void NotificationClient::facebookLogin()
 //    return;
 
     if( m_loginFlag != "1")
-        QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "startFacebook");
+        QAndroidJniObject::callStaticMethod<void>("com.blueorbitz.digicfc2.TMain", "startFacebook");
 }
 
 
 void NotificationClient::androidPlayMusic(int i)
 {
-    QAndroidJniObject::callStaticMethod<void>("com.appli.test.TMain", "android_play_sound", "(I)V", i);
+    QAndroidJniObject::callStaticMethod<void>("com.blueorbitz.digicfc2.TMain", "android_play_sound", "(I)V", i);
 }
