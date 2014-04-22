@@ -19,7 +19,7 @@ Rectangle {
         anchors.centerIn: parent
 
         Text {
-            anchors.verticalCenter: parent.horizontalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
 
             text: "Running Paw"
             color: "purple"
@@ -61,6 +61,18 @@ Rectangle {
                 }
             }
         }
+
+        Text {
+            text: " "
+            font.pointSize: txtPointSize
+        }
+
+        Text {
+            id: press_again
+            text: " "
+            color: "blue"
+            font.pointSize: 15
+        }
     }
 
     Rectangle{
@@ -88,6 +100,8 @@ Rectangle {
         {
             // go to facebook page
             notificationClient.loginFlag++;
+
+            press_again.text = "Press again to go to home page!!"
         }
     }
 }

@@ -7,7 +7,7 @@
 QTimer  *pAnimalNearByTimer;
 QTimer  *pItemFoundTimer;
 
-int multiplier = 100;
+int multiplier = 1000;
 
 MyEvent::MyEvent(QObject *parent) :
     QObject(parent)
@@ -57,7 +57,7 @@ void MyEvent::finalizePickCount()
 void MyEvent::startRandomAnimalTimer()
 {
     int low = 15;
-    int high = 60;
+    int high = 45;
 
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
@@ -70,7 +70,7 @@ void MyEvent::startRandomAnimalTimer()
 void MyEvent::startRandomPickUpTimer()
 {
     int low = 120;
-    int high = 300;
+    int high = 240;
 
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
